@@ -15,7 +15,6 @@ using namespace std;
 class Usuario{
     
 protected: //acceso de clase protected
-    
     string nombre;
     string apellido;
     string num_cliente;
@@ -40,6 +39,7 @@ public: //acceso de clase public
     void displayBalance();
     void operaciones(double bal);
     
+    void virtual mostrarDat();
 
 };
 
@@ -159,5 +159,11 @@ void Usuario::operaciones(double bal){
         }
     }
    
+}
+
+void Usuario::mostrarDat(){
+    cout<<"  Nombre: "<<nombre;
+    cout<<"  Apellido: "<<apellido<<endl;
+    
 };
 #endif /* usuario_h */

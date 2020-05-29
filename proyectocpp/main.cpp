@@ -4,7 +4,9 @@
 //  Fecha de actualización: 21/05/2020
 //  Proyecto CPP: El proyecto, aún WIP, se le ha añadido la herencia, definido en las clases que se heredan de Usuario y especificado en su .h, la sobrecarga en carteraDebito.h línea 41 y la sobreescritura en el main, línea 147, los métodos de acceso a clases también están especificados en su respectiva clase.
 //  Solo falta añadir las clases respectivas a tVales
-//
+
+//  Fecha de actualización: 28/05/2020
+//  Avance 2, se incluyó polimorfismo en las clases carteraCredito y carteraDebito, reemplazando el método de listado con la clase virtual mostrarDat de la clase Usuario, se incluyen pruebas al visualizar el listado de las respectivas carteras, el polimorfismo se encuentra en la línea 42 de la clase usuario y en ambas clases al igual que los vectores en el main y en las opciones 4 y 5 del break.
 //
 //  Created by Manolo Medina on 11/14/19.
 //  Copyright © 2019 Manolo Medina. All rights reserved.
@@ -20,6 +22,7 @@
 #include "tDebito.h"
 #include "carteraCredito.h"
 #include "carteraDebito.h"
+#include "carteraCreditoPol.h"
 
 using namespace std;
 
@@ -33,11 +36,23 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
     //Usuario x;
     tCredito usuarioTCC;
     //tDebito z;
-    carteraCredito carteraTCC;
-    carteraDebito carteraTDD;
+    //carteraCredito carteraTCC;
+   // carteraDebito carteraTDD;
+   // carteraCreditoPol;
+    
+    Usuario *vectorCC[10] ;
+    Usuario *vectorCD[10] ;
     
     int contaCC = 0;
     int contaCD = 0;
+    
+    for (int i=0; i <= 10; i++){
+        vectorCC[i] = NULL;
+    }; //Imprimimos lista de clientes del 1 al 10
+
+    for (int j=0; j <= 10; j++){
+        vectorCD[j] = NULL;
+    };
     
     //Ubicacion ubc;
     bool exit = false;
@@ -50,7 +65,7 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
         int option;
         string tarjeta;
         double bAl;
-        int i = 0;
+        //int i = 0;
         cout<<"-------------------------------"<<endl;
         cout<<"          Royal Bank"<<endl;
         cout<<"-------------------------------"<<endl;
@@ -60,13 +75,12 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
         cout<<"(3) Realizar Operaciones"<<endl;
         cout<<"(4) Visualizar listado de clientes Crédito"<<endl;
         cout<<"(5) Visualizar listado de clientes Debito"<<endl;
-        cout<<"(6) Visualizar listado de clientes Debito con método modificado"<<endl;
-        cout<<"(7) SALIR"<<endl;
+        cout<<"(6) SALIR"<<endl;
         cin>>option;
   
         switch (option){
             case 1:
-                cout<<"Por favor ingrese sus datos "<<i+1<<endl;
+                cout<<"Por favor ingrese sus datos "<<endl;
                 cout<<"Ingrese su Nombre: ";
                 cin >> Usrnombre;
                 usuarioTCC.setNombre(Usrnombre);
@@ -82,19 +96,22 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
                 cout<<"Tarjeta de debito o crédito? C/D: ";
                 cin>>tarjeta;
                 if(tarjeta == "C" or tarjeta == "c"){
-                    carteraTCC.credito.genNumTCC();
+                   // carteraTCC.credito.genNumTCC();
                     checkCredito = true;
                     
-                    carteraTCC.incluirClienteCC(contaCC, Usrnombre, Usrapellido);
-                    contaCC ++;  // Se incrementa para añadir el nuevo cliente al arreglo
+                    vectorCC[contaCC] = new carteraCredito(Usrnombre, Usrapellido, Usrcuenta, bAl);
+                    vectorCC[contaCC]->mostrarDat();
                     
-                    // carteraTCC.credito.getNombreCompleto(Usrnombre, Usrapellido);
+                    contaCC ++;  // Se incrementa para añadir el nuevo cliente al arreglo
                 }
                 else if(tarjeta == "D" or tarjeta == "d"){
-                    carteraTDD.debito.genNumTDD();
+                    //carteraTDD.debito.genNumTDD();
                     checkDebito = true;
                     
-                    carteraTDD.incluirClienteCD(contaCD, Usrnombre, Usrapellido, bAl);
+                    vectorCD[contaCD] = new carteraDebito(Usrnombre, Usrapellido, Usrcuenta, bAl);
+                    vectorCD[contaCD]->mostrarDat();
+                    
+                    //carteraTDD.incluirClienteCD(contaCD, Usrnombre, Usrapellido, bAl);
                     contaCD ++;  // Se incrementa para añadir el nuevo cliente al arreglo
                     
                 }
@@ -115,8 +132,8 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
                 delay(1);
                 cout << "Tus datos son:\n\n";
                 usuarioTCC.displayDatos();
-                carteraTCC.credito.getNumTCC();
-                carteraTDD.debito.getNumTDD();
+               // carteraTCC.credito.getNumTCC();
+                //carteraTDD.debito.getNumTDD();
                 
                 
                 
@@ -140,15 +157,25 @@ int main() // se crean los objetos, algunos con los parametros pre-establecidos 
                 };
                 break;
             case 4:
-                carteraTCC.listadoClientesCC();
+                //carteraTCC.listadoClientesCC();
+                cout << "Listado de Clientes --> Cartera de Crédito\n";
+                for (int i=0; i <= 10; i++) //Imprimimos lista de clientes del 1 al 10
+                {
+                    if (vectorCC[i] != NULL){
+                        vectorCC[i]->mostrarDat();
+                    }
+                };
                 break;
             case 5:
-                carteraTDD.listadoClientesCD(); //método original
+                cout << "Listado de Clientes --> Cartera de Debito\n";
+                for (int j=0; j <= 10; j++) //Imprimimos lista de clientes del 1 al 10
+                {
+                    if (vectorCD[j] != NULL){
+                        vectorCD[j]->mostrarDat();
+                    }
+                };
                 break;
             case 6:
-                carteraTDD.listadoClientesCD("Nombre: "); //método sobreescrito
-                break;
-            case 7:
                 cout<<"FIN DE SESIÓN\n";
                 exit = true;
         }

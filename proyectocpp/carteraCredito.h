@@ -19,23 +19,41 @@ class carteraCredito:public Usuario
 {
 private: //acceso de clase private
     //string lista_clientesCC[20] = {" "};
-    string lista_clientesCC[20];
+    
+    //string lista_clientesCC[20];
     
 public: //acceso de clase public
     //carteraCredito(int con = 0, string = "0", string = "1");
-    void incluirClienteCC(int contaCliente, string nombre, string apellido);
-    void listadoClientesCC();
-    tCredito credito;
+    //void incluirClienteCC(int contaCliente, string nombre, string apellido);
+    //void listadoClientesCC();
+    
+    //void listaVectorCC();
+    //tCredito credito;
+    carteraCredito(string, string, int, double);
+        void mostrarDat();
+        
+    };
+
+    carteraCredito::carteraCredito(string nom, string apido, int no_cuenta, double bal) : Usuario(nom, apido, no_cuenta, bal){
+       
+    }
+
+    void carteraCredito::mostrarDat(){
+        Usuario::mostrarDat();
+        cout<<"PRUEBA VISUALIZACIÓN POLIMORFISMO CREDITO"<<endl;
+    }
+
     //void getNumTarjeta(){
       //  return x.getNumTarjeta();
-    //}
-};
+   // }
+//};
 
 //carteraCredito::carteraCredito(string num_cliente, string lista){
     //numeroCliente = num_cliente;
     //lista_clientes[0] = lista;
 //}
 
+/*
 void carteraCredito::incluirClienteCC(int contaCliente, string nombre, string apellido){
     lista_clientesCC[contaCliente] = getNombreCompleto(nombre, apellido); //método sobreescrito
     cout<<"  Nuevo Cliente incluido en cartera de Crédito: "<<lista_clientesCC[contaCliente]<<endl;
@@ -52,5 +70,8 @@ void carteraCredito::listadoClientesCC(){
     }
     return;
 }
+*/
+
+
 
 #endif /* carteraCredito_h */
