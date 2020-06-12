@@ -46,6 +46,8 @@ Al inicializarse el programa se muestra un menú con las opciones que puede util
   
 ## Consideraciones
 
+Los archivos se encuentran en la carperta testpolimorfismo.
+
 Al ejecutar el programa, solamente el último usuario creado puede efectuar operaciones bancarias.
 
 El programa solamente corre en consola y no incluye ninguna libreria atada a un sistema operativo por lo que deberia
