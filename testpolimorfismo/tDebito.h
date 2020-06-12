@@ -9,14 +9,14 @@
 #ifndef tDebito_h
 #define tDebito_h
 
-#include "usuario.h"
+#include "usuario.h"        // Se incluyen las bibliotecas utilizadas
 #include <iostream>
 
 using namespace std;
 
-class tDebito:public Usuario{
+class tDebito:public Usuario{       // Clase hereda de Usuario
 public:
-    tDebito():Usuario(" "," ",0,0){};
+    tDebito():Usuario(" "," ",0,0){};       // Contructor por default
     tDebito(string nom, string ap, double bal, int id):Usuario(nom, ap, bal, id){};
     string mostrarDat(){
         return(nombre + " " + apellido);
@@ -25,7 +25,7 @@ public:
         return(balance);
     }
     
-    void operaciones(){
+    void operaciones(){     // Metodo de operaciones depende de tipo de tarjeta
         bool exit_opt = false;
         while(exit_opt == false){
             

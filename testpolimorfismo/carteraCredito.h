@@ -9,32 +9,27 @@
 #ifndef carteraCredito_h
 #define carteraCredito_h
 #include <iostream>
-#include "usuario.h"
+#include "usuario.h"        // Se incluyen bibliotecas utilizadas
 #include "tCredito.h"
 
 using namespace std;
 
 class carteraCredito:public tCredito{
 private:
-    int contacc = 0;
-    Usuario *usrcc[10];
+    int contacc = 0;        // Contador para vector
+    Usuario *usrcc[10];     // Se define como apuntador para usar polimorfismo
     
     
     
 public:
-    //void agrega_usuariocc();
-    //void muestra_usuarioscc();
-    
-    
-    void agrega_usuariocc(string _usr, string _ap, double _bal, int _pin){
-        
-        usrcc[contacc] = new tCredito(_usr, _ap, _bal, _pin);
+    // agrega_usuariocc agrega el objecto a arreglo de usuarios de credito
+    void agrega_usuariocc(string tusr, string tap, double tbal, int tpin){
+        // New crea el objeto para usar polimorfismo y lo agrega a arreglo
+        usrcc[contacc] = new tCredito(tusr, tap, tbal, tpin);
         contacc++;
-        //usrcc[0]->get_fullname();
     }
-    
+    // mustra_usuarioscc nos va a mostrar todos los objetos guardados en el arreglo
     void muestra_usuarioscc(){
-        //usrcc[0]->get_fullname();
         for (int i=0; i < contacc; i++) //Imprimimos lista de clientes
         {
             if (usrcc[i] != NULL){

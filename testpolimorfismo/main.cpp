@@ -2,18 +2,21 @@
 //  main.cpp
 //  testpolimorfismo
 //
-/*
-    Entrega Avance Clases abstractas:
-        Se ha reescrito el código por practicidad, la clase Usuario se ha vuelto abstracta y sus métodos son sobreescritos en las clases tCredito, tDebito y tVales con el ejemplo de que en la función operaciones de tVales no se puede hacer depositos, el polimorfismo se incluye en las clases carteraCredito, carteraDebito y carteraVales, ahí se crean objetos de sus respectivas clases (tCredito, tDebito, etc.) y son añadidos a un vector que guarda los datos de los usuarios de sus respectivas tarjetas, los cuales pueden desplegarse según se quiera una vez se ejecuta el main, cabe mencionar que la visuallización de los datos se refiere a los del usuario en uso, es decir, el último usuario registrado, independientemente de su tipo de tarjeta, éste puede hacer operaciones definidas por su tipo, hago incapíe en que solo el último usuario registrado puede hacer uso de las opciones (2) y (3) del main.
-        También se ajustó el UML.
- 
-*/
-//  Created by Manolo Medina on 5/28/20.
+//  Entrega Final:
+//
+//  Las funciones han sido comentadas, a continuación se describe el programa:
+//  El programa es un cajaro automatico donde se captura diferentes tipos de usuario
+//  dependiendo de su tipo de tarjeta (credito, debido o de vales) y los agrega a un
+//  arreglo especifico a su tipo de usuario tambien permitiendo que se puedan hacer la
+//  operaciones respectivas dependiendo del tipo de tarjeta. e.j. tarjetas de vales no
+//  pueden hacer depositos.
+//
+//  Created by Manolo Medina A01706212 on 5/28/20.
 //  Copyright © 2020 Manolo Medina. All rights reserved.
 //
 
 #include <iostream>
-#include "usuario.h"
+#include "usuario.h"        // Bibliotecas utilizadas por el proyecto
 #include "carteraCredito.h"
 #include "tCredito.h"
 #include "carteraDebito.h"
@@ -28,18 +31,7 @@ void delay(long secs) {
 }
 
 int main() {
-    
-   // carteraCredito *vectorCC[10] ;
-    
-   // int contaCC = 0;
-    
-    /*carteraCredito usr;   // esttructura básica
-    
-    usr.setNombre("Jan");
-    usr.setApellido("Valta");
-    
-    cout << "Datos de Usuario: " << usr.mostrarDat() << endl;*/
-    
+       
     tCredito usr;
     carteraCredito carteraCredito;
     tDebito usrd;
@@ -48,7 +40,7 @@ int main() {
     carteraVales carteraVales;
     int tcheck = 0;
     
-    bool exit = false;
+    bool exit = false;  // Pequeño menu
       while(exit == false){
           string tarjeta;
           string forename;
@@ -90,7 +82,6 @@ int main() {
                       cin>>cash;
                       usr.setBalance(cash);
                       carteraCredito.agrega_usuariocc(forename, surname, cash, idpin);
-                      //tCredito.muestra_usuarioscc();
                       
                   }
                   else if(tarjeta == "D" or tarjeta == "d"){
@@ -141,7 +132,6 @@ int main() {
                   cout << "------->>>>>>>>>> 100%\n";
                   delay(1);
                   cout << "Tus datos son:\n\n";
-                  //cout<<tcheck<<endl;
                   if(tcheck == 1){
                       cout << usr.mostrarDat()<<endl;
                       cout << "Balance actual: "<<usr.mostrarBal()<<endl;

@@ -9,16 +9,15 @@
 #ifndef tCredito_h
 #define tCredito_h
 
-#include "usuario.h"
+#include "usuario.h"    // Se incluyen las bibliotecas utilizadas
 #include <iostream>
 
 using namespace std;
 
-//carteraCredito *vectorCC[10] ;
 
-class tCredito:public Usuario{
+class tCredito:public Usuario{  // Clase hereda de Usuario
 public:
-    tCredito():Usuario(" "," ",0,0){};
+    tCredito():Usuario(" "," ",0,0){};  // Contructor por default
     tCredito(string nom, string ap, double bal, int id):Usuario(nom, ap, bal, id){};
     string mostrarDat(){
         return(nombre + " " + apellido);
@@ -27,7 +26,7 @@ public:
         return(balance);
     }
     
-    void operaciones(){
+    void operaciones(){     // Metodo de operaciones depende de tipo de tarjeta
         bool exit_opt = false;
         while(exit_opt == false){
             

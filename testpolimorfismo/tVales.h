@@ -8,14 +8,14 @@
 
 #ifndef tVales_h
 #define tVales_h
-#include "usuario.h"
+#include "usuario.h"        // Se incluyen las bibliotecas utilizadas
 #include <iostream>
 
 using namespace std;
 
-class tVales:public Usuario{
+class tVales:public Usuario{        // Clase hereda de Usuario
 public:
-    tVales():Usuario(" "," ",0,0){};
+    tVales():Usuario(" "," ",0,0){};        // Contructor por default
     tVales(string nom, string ap, double bal, int id):Usuario(nom, ap, bal, id){};
     string mostrarDat(){
         return(nombre + " " + apellido);
@@ -24,13 +24,13 @@ public:
         return(balance);
     }
     
-    void operaciones(){
+    void operaciones(){     // Metodo de operaciones depende de tipo de tarjeta
         bool exit_opt = false;
         while(exit_opt == false){
             
             int opt;
             double retiro;
-            //double deposito;
+            
             cout << "(1) Consultar Saldo:"<<endl;
             cout << "(2) Realizar retiro:"<<endl;
             cout << "(3) Regresar al menu:"<<endl;
